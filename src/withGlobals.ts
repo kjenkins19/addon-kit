@@ -1,8 +1,8 @@
-/* eslint-env browser */
+import { StoryFn as StoryFunction, StoryContext } from "@storybook/addons";
 import { useEffect, useGlobals } from "@storybook/addons";
 
-export const withGlobals = (StoryFn, context) => {
-  const [{ myAddon }, updateGlobals] = useGlobals();
+export const withGlobals = (StoryFn: StoryFunction, context: StoryContext) => {
+  const [{ myAddon }] = useGlobals();
   // Is the addon being used in the docs panel
   const isInDocs = context.viewMode === "docs";
 
@@ -17,7 +17,7 @@ export const withGlobals = (StoryFn, context) => {
   return StoryFn();
 };
 
-function displayToolState(selector, state) {
+function displayToolState(selector: string, state: any) {
   const rootElement = document.getElementById(selector);
   let preElement = rootElement.querySelector("pre");
 
